@@ -3,11 +3,11 @@
 
 from django.core.exceptions import ValidationError
 from django.test import TestCase
-from things.models import thing
+from things.models import Thing
 
 class ModelTest(TestCase):
     def setUp(self):
-        self.thing = thing(name="Foobar", description="Foobar thing", quantity=2)
+        self.thing = Thing(name="Foobar", description="Foobar thing", quantity=2)
 
     def test_valid_thing(self):
         self._assert_thing_is_valid()
@@ -25,7 +25,7 @@ class ModelTest(TestCase):
         self._assert_thing_is_invalid(message="Name must not have more than 30 characters")
 
     def test_name_must_be_unique(self):
-        other_thing = thing(name="Baz", description="Baz thing", quantity=1)
+        other_thing = Thing(name="Baz", description="Baz thing", quantity=1)
         other_thing.save()
         self.thing.name = other_thing.name
         self._assert_thing_is_invalid(message="Name must be unique")
@@ -43,13 +43,13 @@ class ModelTest(TestCase):
         self._assert_thing_is_invalid(message="Description must not have more than 120 characters")
 
     def test_description_need_not_be_unique(self):
-        other_thing = thing(name="Baz", description="Baz thing", quantity=1)
+        other_thing = Thing(name="Baz", description="Baz thing", quantity=1)
         other_thing.save()
         self.thing.description = other_thing.description
         self._assert_thing_is_valid(message="Description need not be unique")
 
     def test_quantity_need_not_be_unique(self):
-        other_thing = thing(name="Baz", description="Baz thing", quantity=1)
+        other_thing = Thing(name="Baz", description="Baz thing", quantity=1)
         other_thing.save()
         self.thing.quantity = other_thing.quantity
         self._assert_thing_is_valid(message="Quantity need not be unique")

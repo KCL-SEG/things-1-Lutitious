@@ -3,7 +3,7 @@ from django.db import models
 
 
 # Create your models here.
-class thing(models.Model):
+class Thing(models.Model):
     # Create a name field which cannot be blank, must be unique, and have a length of 30 characters or less
     name = models.CharField(max_length=30, unique=True, blank=False)
     # Create a description field which can be blank, but has a length of 120 characters or less
