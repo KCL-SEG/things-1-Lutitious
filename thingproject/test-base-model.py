@@ -3,14 +3,14 @@
 
 from django.core.exceptions import ValidationError
 from django.test import TestCase
-from things.models import Thing
+from things.models import thing
 
 class BaseModelTest(TestCase):
     def setUp(self):
-        self.thing = Thing(name="Foobar", description="Foobar thing", quantity=2)
+        self.thing = thing(name="Foobar", description="Foobar thing", quantity=2)
 
     def test_valid_thing(self):
-        self._assert_thing_is_valid("It was not possible to create a Thing with the required attributes.")
+        self._assert_thing_is_valid("It was not possible to create a thing with the required attributes.")
 
     def _assert_thing_is_valid(self, message="A valid thing was rejected"):
         try:
