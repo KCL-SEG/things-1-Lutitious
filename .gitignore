@@ -313,4 +313,6 @@ pip-selfcheck.json
 ### Staticfiles ###
 staticfiles
 
+.idea
+
 # End of https://www.toptal.com/developers/gitignore/api/python,django,macos,linux,windows
